@@ -53,6 +53,3 @@ The only required parameters are a pair of authentication parameters: `accessid`
 
 ## Testing / Contributing
 See [CONTRIBUTING.md](https://github.com/SumoLogic/sumo-collector-puppet-module/blob/master/CONTRIBUTING.md).
-
-
-| REPLACEMENET | *REPLACEMENT*                                  | undef
