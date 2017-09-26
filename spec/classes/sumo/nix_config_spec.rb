@@ -8,11 +8,6 @@ RSpec.describe 'sumo::nix_config' do
     it { is_expected.not_to contain_file('/usr/local/sumo/sumo.json') }
   end
 
-  context 'with manage_config_file false' do
-    let(:params) { { manage_config_file: false, accessid: 'accessid', accesskey: 'accesskey' } }
-    it { is_expected.not_to contain_file('/etc/sumo.conf') }
-  end
-
   context 'with only accessid and accesskey' do
     let(:params) { { accessid: 'accessid', accesskey: 'accesskey' } }
     it { is_expected.to compile }
@@ -26,7 +21,6 @@ RSpec.describe 'sumo::nix_config' do
   let(:params) do
     {
       manage_sources: true,
-      manage_config_file: true,
       accessid: 'accessid',
       accesskey: 'accesskey',
     }
@@ -36,7 +30,7 @@ RSpec.describe 'sumo::nix_config' do
 
   it { is_expected.to contain_file('/usr/local/sumo') }
   it { is_expected.to contain_file('/usr/local/sumo/sumo.json') }
-  it { is_expected.to contain_file('/etc/sumo.conf') }
+  it { is_expected.to contain_file('/etc/sumoVarFile.txt') }
 
   it { is_expected.to contain_exec('Download Sumo Executable') }
   it { is_expected.to contain_exec('Execute sumo') }

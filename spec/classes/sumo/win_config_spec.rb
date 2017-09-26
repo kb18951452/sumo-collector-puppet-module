@@ -8,15 +8,9 @@ RSpec.describe 'sumo::win_config' do
     it { is_expected.not_to contain_file('C:\sumo\sumo.json') }
   end
 
-  context 'with manage_config_file false' do
-    let(:params) { { manage_config_file: false, accessid: 'accessid', accesskey: 'accesskey' } }
-    it { is_expected.not_to contain_file('C:\sumo\sumo.conf') }
-  end
-
   let(:params) do
     {
       manage_sources: true,
-      manage_config_file: true,
       accessid: 'accessid',
       accesskey: 'accesskey',
     }
@@ -27,7 +21,7 @@ RSpec.describe 'sumo::win_config' do
   it { is_expected.to contain_file('C:\sumo\download_sumo.ps1') }
   it { is_expected.to contain_file('C:\sumo') }
   it { is_expected.to contain_file('C:\sumo\sumo.json') }
-  it { is_expected.to contain_file('C:\sumo\sumo.conf') }
+  it { is_expected.to contain_file('C:\sumo\sumoVarFile.txt') }
 
   it { is_expected.to contain_exec('download_sumo') }
   it { is_expected.to contain_package('sumologic') }

@@ -1,10 +1,10 @@
 # Shared params class
 class sumo::params {
   if ($::osfamily == 'windows') {
-    $sumo_conf_source_path  = 'puppet:///modules/sumo/sumo_win.conf'
+    $sumo_json_source_path  = 'puppet:///modules/sumo/sumo_win.json'
     $sources = 'C:\sumo\sumo.json'
   } else {
-    $sumo_conf_source_path  = 'puppet:///modules/sumo/sumo_nix.conf'
+    $sumo_json_source_path  = 'puppet:///modules/sumo/sumo_nix.json'
     $sources = '/usr/local/sumo/sumo.json'
     case $::architecture {
       'x86_64', 'amd64': {
@@ -18,7 +18,5 @@ class sumo::params {
       default: { fail("there is no supported arch ${::architecture}") }
     }
   }
-
-  $sumo_json_source_path = 'puppet:///modules/sumo/sumo.json'
   $syncsources           = $sources
 }

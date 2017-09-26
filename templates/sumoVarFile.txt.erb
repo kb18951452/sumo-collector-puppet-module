@@ -1,0 +1,74 @@
+# This file is managed by Puppet
+<%- if @accessid && @accesskey -%>
+sumo.accessid=<%= @accessid %>
+sumo.accesskey=<%= @accesskey %>
+<%- end -%>
+<%- if @category -%>
+category=<%= @category %>
+<%- end -%>
+<%- if @clobber -%>
+clobber=<%= @clobber %>
+<%- end -%>
+<%- if @collector_name -%>
+collector.name=<%= @collector_name %>
+<%- end -%>
+<%- if @collector_secureFiles -%>
+collector.secureFiles=<%= @collector_secureFiles %>
+<%- end -%>
+<%- if @collector_url -%>
+collector.url=<%= @collector_url %>
+<%- end -%>
+<%- if @description -%>
+description=<%= @description %>
+<%- end -%>
+<%- if @disableActionSource -%>
+disableActionSource=<%= @disableActionSource %>
+<%- end -%>
+<%- if @disableScriptSource -%>
+disableScriptSource=<%= @disableScriptSource %>
+<%- end -%>
+<%- if @disableUpgrade -%>
+disableUpgrade=<%= @disableUpgrade %>
+<%- end -%>
+<%- if @ephemeral -%>
+ephemeral=<%= @ephemeral %>
+<%- end -%>
+<%- if @hostName -%>
+hostName=<%= @hostName %>
+<%- end -%>
+<%- if @proxy_host -%>
+proxy.host=<%= @proxy_host %>
+<%- end -%>
+<%- if @proxy_ntlmdomain -%>
+proxy.ntlmdomain=<%= @proxy_ntlmdomain %>
+<%- end -%>
+<%- if @proxy_password -%>
+proxy.password=<%= @proxy_password %>
+<%- end -%>
+<%- if @proxy_port -%>
+proxy.port=<%= @proxy_port %>
+<%- end -%>
+<%- if @proxy_user -%>
+proxy.user=<%= @proxy_user %>
+<%- end -%>
+<%- if @runAs_username -%>
+runAs.username=<%= @runAs_username %>
+<%- end -%>
+<%- if @skipRegistration -%>
+skipRegistration=<%= @skipRegistration %>
+<%- end -%>
+<%- if @sources -%>
+sources=<%= @sources %>
+<%- end -%>
+<%- if @syncSources -%>
+syncSources=<%= @syncSources %>
+<%- end -%>
+<%- if @targetCPU -%>
+targetCPU=<%= @targetCPU %>
+<%- end -%>
+<%- if @timeZone -%>
+timeZone=<%= @timeZone %>
+<%- end -%>
+<%- if @winRunAs_password -%>
+winRunAs.password=<%= @winRunAs_password %>
+<%- end -%>

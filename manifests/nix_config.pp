@@ -2,10 +2,15 @@
 class sumo::nix_config (
   $accessid               = $sumo::accessid,
   $accesskey              = $sumo::accesskey,
+  $category               = $sumo::category,
   $clobber                = $sumo::clobber,
   $collector_name         = $sumo::collector_name,
+  $description            = $sumo::description,
+  $disableActionSource    = $sumo::disableActionSource,
+  $disableScriptSource    = $sumo::disableScriptSource,
+  $disableUpgrade         = $sumo::disableUpgrade,
   $ephemeral              = $sumo::ephemeral,
-  $manage_config_file     = $sumo::manage_config_file,
+  $hostName               = $sumo::hostName,
   $manage_sources         = $sumo::manage_sources,
   $proxy_host             = $sumo::proxy_host,
   $proxy_ntlmdomain       = $sumo::proxy_ntlmdomain,
@@ -13,10 +18,13 @@ class sumo::nix_config (
   $proxy_port             = $sumo::proxy_port,
   $proxy_user             = $sumo::proxy_user,
   $sources                = $sumo::sources,
-  $sumo_conf_source_path  = $sumo::sumo_conf_source_path,
+  $sumo_json_source_path  = $sumo::sumo_json_source_path,
   $sumo_exec              = $sumo::sumo_exec,
   $sumo_short_arch        = $sumo::sumo_short_arch,
   $syncsources            = $sumo::syncsources,
+  $targetCPU              = $sumo::targetCPU,
+  $timeZone               = $sumo::timeZone,
+  $url                    = $sumo::url,
 ) {
   unless ($accessid != undef and $accesskey != undef) {
     fail(
@@ -41,14 +49,12 @@ class sumo::nix_config (
     }
   }
 
-  if $manage_config_file {
-    file { '/etc/sumo.conf':
-      ensure  => present,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0600',
-      content => template('sumo/sumo.conf.erb')
-    }
+  file { '/etc/sumoVarFile.txt':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    content => template('sumo/sumoVarFile.txt.erb')
   }
 
   exec { 'Download Sumo Executable':
@@ -59,9 +65,11 @@ class sumo::nix_config (
   }
 
   exec { 'Execute sumo':
-    command => "/bin/sh /usr/local/sumo/${sumo_exec} -q",
+    command => "/bin/sh /usr/local/sumo/${sumo_exec} -q -varfile /etc/sumoVarFile.txt",
     cwd     => '/usr/local/sumo',
     creates => '/opt/SumoCollector',
-    require => Exec['Download Sumo Executable'],
+    require => [
+      Exec['Download Sumo Executable'],
+      File['/etc/sumoVarFile.txt'],
   }
 }

@@ -2,10 +2,15 @@
 class sumo::win_config (
   $accessid               = $sumo::accessid,
   $accesskey              = $sumo::accesskey,
+  $category               = $sumo::category,
   $clobber                = $sumo::clobber,
   $collector_name         = $sumo::collector_name,
+  $description            = $sumo::description,
+  $disableActionSource    = $sumo::disableActionSource,
+  $disableScriptSource    = $sumo::disableScriptSource,
+  $disableUpgrade         = $sumo::disableUpgrade,
   $ephemeral              = $sumo::ephemeral,
-  $manage_config_file     = $sumo::manage_config_file,
+  $hostName               = $sumo::hostName,
   $manage_sources         = $sumo::manage_sources,
   $proxy_host             = $sumo::proxy_host,
   $proxy_ntlmdomain       = $sumo::proxy_ntlmdomain,
@@ -13,10 +18,13 @@ class sumo::win_config (
   $proxy_port             = $sumo::proxy_port,
   $proxy_user             = $sumo::proxy_user,
   $sources                = $sumo::sources,
-  $sumo_conf_source_path  = $sumo::sumo_conf_source_path,
+  $sumo_json_source_path  = $sumo::sumo_json_source_path,
   $sumo_exec              = $sumo::sumo_exec,
   $sumo_short_arch        = $sumo::sumo_short_arch,
   $syncsources            = $sumo::syncsources,
+  $targetCPU              = $sumo::targetCPU,
+  $timeZone               = $sumo::timeZone,
+  $url                    = $sumo::url,
 ) {
   unless ($accessid != undef and $accesskey != undef) {
     fail(
@@ -48,14 +56,12 @@ class sumo::win_config (
     }
   }
 
-  if $manage_config_file {
-    file { 'C:\sumo\sumo.conf':
-      ensure  => present,
-      mode    => '0644',
-      group   => 'Administrators',
-      content => template('sumo/sumo.conf.erb'),
-      require => File['C:\sumo'];
-    }
+  file { 'C:\sumo\sumoVarFile.txt':
+    ensure  => present,
+    mode    => '0644',
+    group   => 'Administrators',
+    content => template('sumo/sumoVarFile.txt.erb'),
+    require => File['C:\sumo'];
   }
 
   $powershell_path = 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe'
@@ -67,11 +73,11 @@ class sumo::win_config (
 
   package { 'sumologic':
     ensure          => installed,
-    install_options => ['-q'],
+    install_options => ['-q', '-varfile' => 'C:\sumo\sumoVarFile.txt'],
     source          => 'C:\sumo\sumo.exe',
     require         => [
       Exec['download_sumo'],
-      File['C:\sumo\sumo.conf'],
+      File['C:\sumo\sumoVarFile.txt'],
     ]
   }
 }

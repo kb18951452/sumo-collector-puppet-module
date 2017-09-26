@@ -2,10 +2,15 @@
 class sumo (
   $accessid              = undef,
   $accesskey             = undef,
+  $category              = undef,
   $clobber               = false,
   $collector_name        = undef,
+  $description           = undef,
+  $disableActionSource   = undef,
+  $disableScriptSource   = undef,
+  $disableUpgrade        = undef,
   $ephemeral             = false,
-  $manage_config_file    = true,
+  $hostName              = undef,
   $manage_sources        = false,
   $proxy_host            = undef,
   $proxy_ntlmdomain      = undef,
@@ -13,11 +18,13 @@ class sumo (
   $proxy_port            = undef,
   $proxy_user            = undef,
   $sources               = $sumo::params::sources,
-  $sumo_conf_source_path = $sumo::params::sumo_conf_source_path,
   $sumo_json_source_path = $sumo::params::sumo_json_source_path,
   $sumo_exec             = $sumo::params::sumo_exec,
   $sumo_short_arch       = $sumo::params::sumo_short_arch,
   $syncsources           = $sumo::params::syncsources,
+  $targetCPU             = undef,
+  $timeZone              = undef,
+  $url                   = undef,
 ) inherits sumo::params {
   if $::osfamily == 'windows'{
     class { 'sumo::win_config': }
