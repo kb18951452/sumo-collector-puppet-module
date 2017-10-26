@@ -1,5 +1,5 @@
 # This file is managed by Puppet
-<% if $accessid && $accesskey { -%>
+<% if $accessid and $accesskey { -%>
 sumo.accessid=<%= $accessid %>
 sumo.accesskey=<%= $accesskey %>
 <% } -%>
