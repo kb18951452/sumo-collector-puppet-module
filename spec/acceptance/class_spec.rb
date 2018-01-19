@@ -7,8 +7,8 @@ describe 'sumo class: management of sources/config' do
     class { 'sumo':
       accessid           => 'XXXX: must be filled in to work',
       accesskey          => 'YYYY: must be filled in to work',
-      manage_config_file => true,
       manage_sources     => true,
+      manage_download    => true,
     }
     EOS
 
@@ -23,7 +23,7 @@ describe 'sumo class: management of sources/config' do
     it { is_expected.to be_grouped_into 'root' }
   end
 
-  describe file('/etc/sumo.conf') do
+  describe file('/etc/sumo/sumoVarFile.txt') do
     it { is_expected.to be_file }
     it { is_expected.to be_owned_by 'root' }
     it { is_expected.to be_grouped_into 'root' }

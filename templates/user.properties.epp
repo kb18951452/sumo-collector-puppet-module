@@ -1,0 +1,77 @@
+# This file is managed by Puppet
+<% if $accessid and $accesskey { -%>
+sumo.accessid=<%= $accessid %>
+sumo.accesskey=<%= $accesskey %>
+<% } -%>
+<% if $token { -%>
+token=<%= $token %>
+<% } -%>
+<% if $category { -%>
+category=<%= $category %>
+<% } -%>
+<% if $clobber { -%>
+clobber=<%= $clobber %>
+<% } -%>
+<% if $collector_name { -%>
+name=<%= $collector_name %>
+<% } -%>
+<% if $collector_secureFiles { -%>
+secureFiles=<%= $collector_secureFiles %>
+<% } -%>
+<% if $collector_url { -%>
+url=<%= $collector_url %>
+<% } -%>
+<% if $description { -%>
+description=<%= $description %>
+<% } -%>
+<% if $disableActionSource { -%>
+disableActionSource=<%= $disableActionSource %>
+<% } -%>
+<% if $disableScriptSource { -%>
+disableScriptSource=<%= $disableScriptSource %>
+<% } -%>
+<% if $disableUpgrade { -%>
+disableUpgrade=<%= $disableUpgrade %>
+<% } -%>
+<% if $ephemeral { -%>
+ephemeral=<%= $ephemeral %>
+<% } -%>
+<% if $hostName { -%>
+hostName=<%= $hostName %>
+<% } -%>
+<% if $proxy_host { -%>
+proxyHost=<%= $proxy_host %>
+<% } -%>
+<% if $proxy_ntlmdomain { -%>
+proxyNtlmdomain=<%= $proxy_ntlmdomain %>
+<% } -%>
+<% if $proxy_password { -%>
+proxyPassword=<%= $proxy_password %>
+<% } -%>
+<% if $proxy_port { -%>
+proxyPort=<%= $proxy_port %>
+<% } -%>
+<% if $proxy_user { -%>
+proxyUser=<%= $proxy_user %>
+<% } -%>
+<% if $runAs_username { -%>
+runAsUsername=<%= $runAs_username %>
+<% } -%>
+<% if $skipRegistration { -%>
+skipRegistration=<%= $skipRegistration %>
+<% } -%>
+<% if $sources { -%>
+sources=<%= $sources %>
+<% } -%>
+<% if $syncSources { -%>
+syncSources=<%= $syncSources %>
+<% } -%>
+<% if $targetCPU { -%>
+targetCPU=<%= $targetCPU %>
+<% } -%>
+<% if $timeZone { -%>
+timeZone=<%= $timeZone %>
+<% } -%>
+<% if $winRunAs_password { -%>
+winRunAsPassword=<%= $winRunAs_password %>
+<% } -%>
