@@ -53,6 +53,7 @@ The only required parameters are a pair of authentication parameters: `accessid`
 | syncsources           | For Local File Configuration, the sources file to sync | $sources
 | targetCPU             | Set a CPU target to limit the amount of CPU processing a Collector uses.                                      | undef
 | timeZone              | The time zone to use when the time zone can't be extracted from the time stamp.                               | undef
+| token              	| One-time-use token when logging in, not the encoded TOKEN+URL 						| undef
 | winRunAs_password     | The Collector will run as the specified runAs_username with the specified password.                           | undef
 
 ## Testing / Contributing

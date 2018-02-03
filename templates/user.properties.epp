@@ -1,7 +1,7 @@
 # This file is managed by Puppet
 <% if $accessid and $accesskey { -%>
-sumo.accessid=<%= $accessid %>
-sumo.accesskey=<%= $accesskey %>
+accessid=<%= $accessid %>
+accesskey=<%= $accesskey %>
 <% } -%>
 <% if $token { -%>
 token=<%= $token %>
@@ -55,7 +55,7 @@ proxyPort=<%= $proxy_port %>
 proxyUser=<%= $proxy_user %>
 <% } -%>
 <% if $runAs_username { -%>
-runAsUsername=<%= $runAs_username %>
+runAs.username=<%= $runAs_username %>
 <% } -%>
 <% if $skipRegistration { -%>
 skipRegistration=<%= $skipRegistration %>
@@ -73,5 +73,5 @@ targetCPU=<%= $targetCPU %>
 timeZone=<%= $timeZone %>
 <% } -%>
 <% if $winRunAs_password { -%>
-winRunAsPassword=<%= $winRunAs_password %>
+winRunAs.password=<%= $winRunAs_password %>
 <% } -%>

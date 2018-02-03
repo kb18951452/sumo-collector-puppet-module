@@ -2,12 +2,15 @@ source 'https://rubygems.org'
 
 group :test do
   gem "rake"
-  gem "puppet", ENV['PUPPET_VERSION'] || '~> 3.7.0'
+  gem "puppet", ENV['PUPPET_VERSION'] || '~> 4.6.0'
   gem "rspec"
   gem "rspec-puppet"
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
+  gem "semantic_puppet"
+  gem "puppet-lint-no_erb_template-check"
+  gem "hiera-puppet-helper"
 end
 
 group :development do
